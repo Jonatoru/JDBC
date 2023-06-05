@@ -17,5 +17,7 @@ public class Application {
         employeeDAO.createEmployee(employee, employee.getId());
         System.out.println("Удаление объекта:");
         employeeDAO.deleteEmployee(employeeDAO.getEmployeeById(7));
+
+
     }
 }
