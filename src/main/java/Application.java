@@ -1,9 +1,8 @@
 import java.sql.*;
-import java.util.List;
 
 public class Application {
     public static void main (String[] args) throws SQLException {
-        Employee employee = new Employee(7,"Gerald", "Friman", "man", 50, 3);
+        Employee employee = new Employee("Gerald", "Friman", "man", 50, 3);
         EmployeeDAO employeeDAO = new EmployeeDAOImpl();
         employeeDAO.gerAllEmployees().forEach(System.out::println);
         System.out.println("Проверяю методы:");
@@ -16,7 +15,8 @@ public class Application {
         System.out.println("Изменение объекта:");
         employeeDAO.createEmployee(employee, employee.getId());
         System.out.println("Удаление объекта:");
-        employeeDAO.deleteEmployee(employeeDAO.getEmployeeById(7));
+        employeeDAO.deleteEmployee(employee);
+        System.out.println(employeeDAO.gerAllEmployees());
 
 
     }

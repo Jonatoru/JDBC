@@ -18,7 +18,7 @@ public class Employee {
     @Column (name = "city_id")
     private int cityId;
 
-    public Employee (int id, String firstName, String lastName, String gender, int age, int cityId) {
+    public Employee (String firstName, String lastName, String gender, int age, int cityId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
