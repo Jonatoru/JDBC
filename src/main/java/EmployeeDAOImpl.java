@@ -11,6 +11,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
         String jpqlQuery = "FROM Employee";
         TypedQuery<Employee> query = entityManager.createQuery(jpqlQuery, Employee.class);
         List<Employee> employees = query.getResultList();
+        entityManager.close();
         return employees;
     }
     @Override
@@ -18,6 +19,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
         EntityManager entityManager = Hibernate_EntityManagerFactory.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
         Employee employee = entityManager.find(Employee.class, id);
+        entityManager.close();
         return employee;
     }
     @Override
@@ -27,6 +29,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
         entityManager.find(Employee.class, id);
         employee.setAge(employee.getAge());
         entityManager.getTransaction().commit();
+        entityManager.close();
     }
     @Override
     public void deleteEmployee(Employee employee) {
@@ -35,6 +38,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
         employee =entityManager.find(Employee.class, employee.getId());
         entityManager.remove(employee);
         entityManager.getTransaction().commit();
+        entityManager.close();
     }
     @Override
      public Integer addEmployee(Employee employee) {
@@ -42,6 +46,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
         entityManager.getTransaction().begin();
         entityManager.persist(employee);
         entityManager.getTransaction().commit();
+        entityManager.close();
         return employee.getId();
     }
 }
